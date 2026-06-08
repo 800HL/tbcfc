@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Give — The Bay Christian Family Church</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --black:      #0a0a0a;
+    --dark:       #111318;
+    --dark-card:  #181c24;
+    --border:     #2a2f3d;
+    --border-lit: #3a4055;
+    --gold:       #c8a84b;
+    --gold-glow:  rgba(200,168,75,0.15);
+    --gold-dim:   #8a6e28;
+    --white:      #ffffff;
+    --off-white:  #e8e4dc;
+    --muted:      #8a8fa0;
+    --muted2:     #5a5f70;
+    --green:      #22c55e;
+    --green-dim:  rgba(34,197,94,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* MOCKUP BANNER */
+  .mockup-banner {
+    background: #c8a84b;
+    color: #0a0a0a;
+    text-align: center;
+    padding: 9px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .mockup-banner .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(0,0,0,0.4); flex-shrink:0; }
+
+  /* HEADER */
+  header {
+    position: relative;
+    background: var(--dark);
+    overflow: hidden;
+    padding: 52px 20px 48px;
+    text-align: center;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,168,75,0.11) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .logo-lockup {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    margin-bottom: 28px; position: relative; z-index: 1;
+  }
+  .bay-logo {
+    width: 60px; height: 60px; border-radius: 50%;
+    border: 2px solid var(--gold); background: var(--dark-card);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 28px var(--gold-glow);
+  }
+  .church-name { font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  header h1 {
+    font-family: 'Lora', serif; font-size: clamp(22px, 5.5vw, 36px);
+    font-weight: 600; line-height: 1.2; color: var(--white);
+    position: relative; z-index: 1; margin-bottom: 12px;
+  }
+  header h1 em { font-style: italic; color: var(--gold); }
+  header p {
+    font-size: 14px; font-weight: 400; color: var(--muted); max-width: 460px;
+    margin: 0 auto 24px; line-height: 1.7; position: relative; z-index: 1;
+  }
+  .trust-strip {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; flex-wrap: wrap; position: relative; z-index: 1;
+  }
+  .trust-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: 20px; padding: 5px 12px; font-size: 11px;
+    font-weight: 600; color: var(--muted); letter-spacing: 0.04em;
+  }
+  .trust-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+
+  /* MAIN */
+  main { max-width: 660px; margin: 0 auto; padding: 32px 16px 72px; }
+
+  /* SCRIPTURE */
+  .scripture {
+    text-align: center; padding: 22px 20px; margin-bottom: 24px;
+    border: 1px solid var(--border); border-radius: 14px;
+    background: var(--dark-card); position: relative; overflow: hidden;
+  }
+  .scripture::before {
+    content: '\201C'; font-family: 'Lora', serif; font-size: 110px;
+    color: var(--gold); opacity: 0.07; position: absolute;
+    top: -18px; left: 8px; line-height: 1;
+  }
+  .scripture blockquote {
+    font-family: 'Lora', serif; font-style: italic; font-size: 14.5px;
+    color: var(--off-white); line-height: 1.75; margin-bottom: 8px; position: relative;
+  }
+  .scripture cite {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); font-style: normal;
+  }
+
+  /* MISSION */
+  .mission-box {
+    background: linear-gradient(135deg, rgba(200,168,75,0.09) 0%, rgba(200,168,75,0.03) 100%);
+    border: 1px solid rgba(200,168,75,0.28); border-radius: 14px;
+    padding: 22px; text-align: center; margin-bottom: 20px;
+  }
+  .mission-box .tagline {
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 9px;
+  }
+  .mission-box p {
+    font-family: 'Lora', serif; font-style: italic;
+    font-size: 14px; color: var(--off-white); line-height: 1.7;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--dark-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 26px 22px; margin-bottom: 16px;
+  }
+  .step-header { display: flex; align-items: center; gap: 12px; margin-bottom: 5px; }
+  .step-num {
+    width: 25px; height: 25px; border-radius: 50%; background: var(--gold);
+    color: var(--black); font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .step-title { font-size: 15px; font-weight: 700; color: var(--white); }
+  .step-sub { font-size: 12.5px; color: var(--muted); margin-bottom: 18px; margin-left: 37px; line-height: 1.55; }
+
+  /* ── SEARCHABLE DROPDOWN ── */
+  .select-wrapper { position: relative; }
+
+  .select-trigger {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 44px 12px 14px;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.15s;
+    user-select: none;
+  }
+  .select-trigger:hover, .select-trigger.open { border-color: var(--gold); }
+  .select-trigger .trigger-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; flex-shrink: 0;
+  }
+  .select-trigger .trigger-text { flex: 1; }
+  .select-trigger .trigger-placeholder { color: var(--muted); font-weight: 400; }
+  .select-trigger .trigger-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    background: rgba(34,197,94,0.15); color: var(--green);
+    border-radius: 4px; padding: 2px 6px; margin-left: 4px;
+  }
+  .select-trigger .chevron {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); transition: transform 0.2s;
+    pointer-events: none;
+  }
+  .select-trigger.open .chevron { transform: translateY(-50%) rotate(180deg); }
+
+  .dropdown-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0; right: 0;
+    background: #1e2230;
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .dropdown-panel.open { display: block; animation: dropIn 0.18s ease; }
+  @keyframes dropIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+  .search-box {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .search-box svg { color: var(--muted); flex-shrink: 0; }
+  .search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+    caret-color: var(--gold);
+  }
+  .search-input::placeholder { color: var(--muted2); }
+
+  .options-list {
+    max-height: 280px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .options-list::-webkit-scrollbar { width: 4px; }
+  .options-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .option-group-label {
+    padding: 8px 14px 4px;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted2);
+  }
+  .option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .option-item:hover { background: rgba(200,168,75,0.1); }
+  .option-item.selected { background: rgba(200,168,75,0.12); }
+  .option-icon {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; flex-shrink: 0;
+  }
+  .option-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .option-ticker { font-size: 11px; color: var(--muted); }
+  .option-stable {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    background: var(--green-dim); color: var(--green);
+    border-radius: 4px; padding: 2px 5px; margin-left: auto;
+  }
+  .no-results {
+    padding: 20px 14px;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  /* ── NETWORK DROPDOWN ── */
+  .network-section { display: none; margin-top: 14px; }
+  .network-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--muted2); margin-bottom: 8px;
+  }
+  .network-trigger {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 40px 11px 14px;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.15s;
+    user-select: none;
+    position: relative;
+  }
+  .network-trigger:hover, .network-trigger.open { border-color: var(--gold); }
+  .network-trigger .net-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0;
+  }
+  .network-trigger .chevron {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); transition: transform 0.2s; pointer-events: none;
+  }
+  .network-trigger.open .chevron { transform: translateY(-50%) rotate(180deg); }
+
+  .network-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1e2230;
+    border: 1.5px solid var(--border-lit);
+    border-radius: 10px;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .network-dropdown.open { display: block; animation: dropIn 0.15s ease; }
+  .network-option {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px; cursor: pointer; transition: background 0.12s;
+    font-size: 13px; font-weight: 500; color: var(--white);
+  }
+  .network-option:hover { background: rgba(200,168,75,0.1); }
+  .network-option.selected { background: rgba(200,168,75,0.12); color: var(--gold); }
+  .network-option .ndot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+  .network-option .nfee {
+    margin-left: auto; font-size: 10.5px; color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* QR PANEL */
+  .qr-panel { display: none; }
+  .qr-panel.visible { display: block; animation: fadeUp 0.22s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  .qr-placeholder {
+    text-align: center; padding: 44px 20px;
+    color: var(--muted2); font-size: 13px; line-height: 1.6;
+  }
+  .qr-placeholder svg { margin-bottom: 14px; opacity: 0.25; display:block; margin-inline:auto; }
+
+  .qr-asset-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 22px; flex-wrap: wrap;
+  }
+  .qr-asset-row .icon {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800;
+  }
+  .qr-asset-row .label { font-size: 15px; font-weight: 700; }
+  .qr-asset-row .network-tag {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+    border-radius: 6px; padding: 2px 8px;
+  }
+
+  #qr-container {
+    display: inline-block; padding: 14px; background: #fff;
+    border-radius: 12px; margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(200,168,75,0.14);
+  }
+
+  .address-box {
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px;
+    display: flex; align-items: center; gap: 12px;
+    text-align: left; margin-bottom: 14px;
+  }
+  .address-text {
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    color: var(--off-white); word-break: break-all; flex: 1; line-height: 1.7;
+  }
+  .copy-btn {
+    flex-shrink: 0; background: var(--gold); color: var(--black);
+    border: none; border-radius: 7px; padding: 8px 15px;
+    font-size: 11.5px; font-weight: 800; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; transition: all 0.15s;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .copy-btn:hover { background: #dab955; }
+  .copy-btn.copied { background: var(--green); color: #fff; }
+
+  .qr-note { font-size: 12px; color: var(--muted); line-height: 1.65; text-align: center; }
+  .qr-note strong { color: var(--off-white); }
+
+  .warn-box {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.22);
+    border-radius: 10px; padding: 11px 13px; margin-top: 14px;
+    font-size: 12px; color: #fca5a5; line-height: 1.55; text-align: left;
+  }
+
+  /* HOW IT WORKS */
+  .steps { display: flex; flex-direction: column; }
+  .step-item {
+    display: flex; gap: 14px; padding: 15px 0;
+    border-bottom: 1px solid var(--border); align-items: flex-start;
+  }
+  .step-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-num-sm {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-body strong { font-size: 13.5px; font-weight: 700; color: var(--white); display: block; margin-bottom: 3px; }
+  .step-body span { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* FOOTER */
+  .contact-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 22px; flex-wrap: wrap; padding: 20px 0;
+    border-top: 1px solid var(--border); margin-top: 8px;
+  }
+  .contact-item { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+  .contact-item a { color: var(--gold); text-decoration: none; }
+  .footer-logos { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px; }
+  .exchange-chip {
+    border: 1px solid var(--border); border-radius: 8px; padding: 6px 16px;
+    font-size: 11.5px; font-weight: 700; color: var(--muted); background: var(--dark-card); letter-spacing: 0.05em;
+  }
+  .reg-text { font-size: 10.5px; color: var(--muted2); text-align: center; margin-top: 10px; line-height: 1.6; }
+
+  /* SELECT styling */
+  .form-select {
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8fa0' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .form-select option { background: #1e2230; color: #fff; }
+
+  /* NOTIFY FORM */
+  .notify-form { display: flex; flex-direction: column; gap: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .form-hint { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted2); font-size: 10.5px; }
+  .form-input {
+    background: rgba(255,255,255,0.04); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 10px 13px;
+    color: var(--white); font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 500; outline: none;
+    transition: border-color 0.15s; resize: none; width: 100%;
+  }
+  .form-input::placeholder { color: var(--muted2); font-weight: 400; }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input[readonly] { color: var(--gold); font-weight: 600; cursor: default; }
+  .form-input.mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  textarea.form-input { line-height: 1.55; }
+  .submit-btn {
+    width: 100%; background: var(--gold); color: var(--black);
+    border: none; border-radius: 10px; padding: 14px 20px;
+    font-size: 13.5px; font-weight: 800; cursor: pointer;
+    font-family: 'Montserrat', sans-serif; letter-spacing: 0.04em;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.15s; margin-top: 2px;
+  }
+  .submit-btn:hover { background: #dab955; }
+  .submit-success {
+    display: none; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 14px; padding: 14px; border-radius: 10px;
+    background: var(--green-dim); border: 1px solid rgba(34,197,94,0.25);
+    font-size: 13px; font-weight: 600; color: var(--green); text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    main { padding: 22px 12px 56px; }
+    .card { padding: 20px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  <span class="dot"></span>
+  Design Mockup — For Leadership Review — Addresses Are Illustrative Only
+  <span class="dot"></span>
+</div>
+
+<header>
+  <div class="logo-lockup">
+    <div class="bay-logo" style="background:#000;overflow:hidden;border-color:rgba(200,168,75,0.5)">
+      <img src="data:image/png;base64,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" style="width:100%;height:100%;object-fit:cover;display:block;" alt="The Bay CFC">
+    </div>
+    <div class="church-name">The Bay Christian Family Church</div>
+  </div>
+  <h1><em>Love is King</em></h1>
+  <p>Your generosity reaches souls across Somerset West, Cape Town, and beyond. Give instantly using cryptocurrency — no borders, no delays.</p>
+  <div class="trust-strip">
+    <span class="trust-pill"><span class="dot"></span>VALR Regulated (FSCA)</span>
+    <span class="trust-pill"><span class="dot"></span>Secure &amp; Instant</span>
+    <span class="trust-pill"><span class="dot"></span>Global Giving Made Simple</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- STEP 1: ASSET DROPDOWN -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div class="step-title">Choose your cryptocurrency</div>
+    </div>
+    <div class="step-sub">Select the asset you hold from all currencies supported by VALR.</div>
+
+    <!-- Asset selector -->
+    <div class="select-wrapper" id="assetWrapper">
+      <div class="select-trigger" id="assetTrigger" onclick="toggleAssetDropdown()">
+        <div class="trigger-icon" id="triggerIcon" style="background:#2a2f3d;color:#8a8fa0">?</div>
+        <div class="trigger-text">
+          <span class="trigger-placeholder" id="triggerText">Select a cryptocurrency...</span>
+        </div>
+        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+      <div class="dropdown-panel" id="assetDropdown">
+        <div class="search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input class="search-input" id="assetSearch" placeholder="Search by name or ticker..." oninput="filterAssets()" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="options-list" id="optionsList"></div>
+      </div>
+    </div>
+
+    <!-- Network selector (conditional) -->
+    <div class="network-section" id="networkSection">
+      <div class="network-label" style="margin-top:14px;">Select Network</div>
+      <div class="select-wrapper" id="networkWrapper">
+        <div class="network-trigger" id="networkTrigger" onclick="toggleNetworkDropdown()">
+          <div class="net-dot"></div>
+          <span id="networkTriggerText">Select network...</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="network-dropdown" id="networkDropdown"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: QR + ADDRESS -->
+  <div class="card" style="text-align:center;">
+    <div class="step-header" style="justify-content:flex-start; text-align:left;">
+      <div class="step-num">2</div>
+      <div class="step-title">Scan QR code or copy address</div>
+    </div>
+    <div class="step-sub" style="text-align:left;">Open your wallet app, tap Send, scan the code, enter the amount, and confirm.</div>
+
+    <div class="qr-panel" id="qrPanel">
+      <div class="qr-asset-row">
+        <div class="icon" id="qrIcon"></div>
+        <div class="label" id="qrLabel"></div>
+        <div class="network-tag" id="qrNetTag"></div>
+      </div>
+      <div id="qr-container"><div id="qrcode"></div></div>
+      <div class="address-box">
+        <div class="address-text" id="addressText"></div>
+        <button class="copy-btn" id="copyBtn" onclick="copyAddress()">Copy</button>
+      </div>
+      <p class="qr-note">
+        <strong>Only send <span id="instrAsset"></span> on the <span id="instrNet"></span> network.</strong><br>
+        Sending a different asset or using the wrong network will result in permanent loss of funds.
+      </p>
+      <div class="warn-box">
+        <span style="font-size:15px;flex-shrink:0;">⚠</span>
+        <span>Always verify the first and last 6 characters of the address before confirming in your wallet app.</span>
+      </div>
+    </div>
+
+    <div id="qrPlaceholder" class="qr-placeholder">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+        <rect x="4" y="4" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="25" y="4" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="4" y="25" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+        <rect x="7.5" y="7.5" width="8" height="8" fill="currentColor"/>
+        <rect x="28.5" y="7.5" width="8" height="8" fill="currentColor"/>
+        <rect x="7.5" y="28.5" width="8" height="8" fill="currentColor"/>
+        <rect x="28" y="28" width="5" height="5" fill="currentColor"/>
+        <rect x="36" y="25" width="4" height="4" fill="currentColor"/>
+        <rect x="25" y="36" width="4" height="4" fill="currentColor"/>
+        <rect x="32" y="36" width="4" height="4" fill="currentColor"/>
+        <rect x="36" y="32" width="4" height="4" fill="currentColor"/>
+      </svg>
+      Select a cryptocurrency above to<br>generate your giving QR code
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="card">
+    <div class="step-header" style="margin-bottom:18px;">
+      <div class="step-title">How it works</div>
+    </div>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num-sm">1</div>
+        <div class="step-body">
+          <strong>You send from your wallet</strong>
+          <span>Open any wallet app (VALR, Trust Wallet, Coinbase, etc.), tap Send, scan the QR code, and confirm the amount you feel led to give.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">2</div>
+        <div class="step-body">
+          <strong>We receive it within minutes</strong>
+          <span>Your donation arrives directly in The Bay CFC's VALR account. Every transaction is permanently and transparently recorded on the blockchain.</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">3</div>
+        <div class="step-body">
+          <strong>Let us know you gave</strong>
+          <span>Once sent, complete the short notification form below so we can acknowledge your gift and keep our records up to date.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFY FORM -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div class="step-title">Notify us of your donation</div>
+    </div>
+    <div class="step-sub">Once you've sent your crypto, fill in this short form so we can acknowledge your gift. Your transaction ID is visible in your wallet app after sending.</div>
+
+    <div class="notify-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="you@example.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Asset Sent</label>
+          <input type="text" class="form-input" id="formAsset" placeholder="e.g. USDC" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Approximate Amount (USD)</label>
+          <input type="text" class="form-input" placeholder="e.g. 50">
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:14px;">
+        <label class="form-label">Transaction ID / Hash <span class="form-hint">(from your wallet app)</span></label>
+        <input type="text" class="form-input mono" placeholder="e.g. 0x4a3b...f92c">
+      </div>
+      <div class="form-row" style="margin-bottom:14px;">
+        <div class="form-group">
+          <label class="form-label">Category of Giving</label>
+          <div class="select-wrapper" style="position:relative;">
+            <select class="form-input form-select" id="givingCategory">
+              <option value="" disabled selected>Select a category...</option>
+              <option value="tithe">Tithe</option>
+              <option value="offering">General Offering</option>
+              <option value="missions">Missions</option>
+              <option value="building">Building Fund</option>
+              <option value="benevolence">Benevolence</option>
+              <option value="youth">Youth Ministry</option>
+              <option value="kids">Kids Ministry</option>
+              <option value="special">Special Project</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Partner Code <span class="form-hint">(optional)</span></label>
+          <input type="text" class="form-input" id="partnerCode" placeholder="e.g. PARTNER2024">
+        </div>
+      </div>
+      <button class="submit-btn" onclick="submitForm(this)">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>
+        Notify The Bay CFC of My Donation
+      </button>
+      <div class="submit-success" id="submitSuccess">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" style="color:var(--green)"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Thank you! We've received your notification and will be in touch shortly.
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-row">
+    <div class="contact-item">
+      <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+      <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a>
+    </div>
+    <div class="contact-item">
+      <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      +27 21 853 7771
+    </div>
+  </div>
+  <div class="footer-logos">
+    <div class="exchange-chip">VALR</div>
+    <span style="color:var(--muted2);font-size:11px;">FSCA Regulated</span>
+  </div>
+  <p class="reg-text">The Bay Christian Family Church &nbsp;·&nbsp; Somerset West &amp; Multiple Campuses<br>PBO No. [insert] &nbsp;·&nbsp; NPC [insert]</p>
+
+</main>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// FULL VALR ASSET LIST with accurate deposit networks
+// ─────────────────────────────────────────────────────────────────────────────
+const ASSETS = [
+  // ── POPULAR / PINNED FIRST ──
+  { id:'btc',   name:'Bitcoin',           ticker:'BTC',   icon:'₿', color:'#F7931A', bg:'#3d2800', stable:false,  networks:[{name:'Bitcoin (BTC)',        fee:'Low'}] },
+  { id:'eth',   name:'Ethereum',          ticker:'ETH',   icon:'Ξ', color:'#8ea0f0', bg:'#1a1e40', stable:false,  networks:[{name:'Ethereum (ERC-20)',fee:'Medium'},{name:'Arbitrum (ARB)',fee:'Very low'}] },
+  { id:'usdt',  name:'Tether',            ticker:'USDT',  icon:'$', color:'#26A17B', bg:'#0d2b23', stable:true,   networks:[{name:'Ethereum (ERC-20)',fee:'Medium'},{name:'Arbitrum (ARB)',fee:'Very low'},{name:'Tron (TRC-20)',fee:'Very low'},{name:'BNB Smart Chain (BEP-20)',fee:'Very low'},{name:'Polygon (MATIC)',fee:'Very low'},{name:'Solana (SPL)',fee:'Very low'},{name:'Avalanche C-Chain',fee:'Low'}] },
+  { id:'usdc',  name:'USD Coin',          ticker:'USDC',  icon:'$', color:'#2775CA', bg:'#0d1e35', stable:true,   networks:[{name:'Ethereum (ERC-20)',fee:'Medium'},{name:'Arbitrum (ARB)',fee:'Very low'},{name:'BNB Smart Chain (BEP-20)',fee:'Very low'},{name:'Polygon (MATIC)',fee:'Very low'},{name:'Solana (SPL)',fee:'Very low'},{name:'Avalanche C-Chain',fee:'Low'}] },
+  { id:'sol',   name:'Solana',            ticker:'SOL',   icon:'◎', color:'#9945FF', bg:'#1e0d35', stable:false,  networks:[{name:'Solana (SPL)',          fee:'Very low'}] },
+  { id:'bnb',   name:'BNB',               ticker:'BNB',   icon:'◈', color:'#F3BA2F', bg:'#2d2200', stable:false,  networks:[{name:'BNB Smart Chain (BEP-20)',fee:'Very low'},{name:'BNB Beacon Chain (BEP-2)',fee:'Very low'}] },
+  { id:'xrp',   name:'XRP',               ticker:'XRP',   icon:'✕', color:'#7ab8f5', bg:'#0d1e30', stable:false,  networks:[{name:'XRP Ledger',            fee:'Very low'}] },
+  { id:'ada',   name:'Cardano',           ticker:'ADA',   icon:'₳', color:'#6ba3ff', bg:'#0d1a35', stable:false,  networks:[{name:'Cardano',               fee:'Low'}] },
+  { id:'avax',  name:'Avalanche',         ticker:'AVAX',  icon:'▲', color:'#E84142', bg:'#2d0d0d', stable:false,  networks:[{name:'Avalanche C-Chain',     fee:'Low'},{name:'Avalanche X-Chain',fee:'Low'}] },
+  { id:'dot',   name:'Polkadot',          ticker:'DOT',   icon:'●', color:'#E6007A', bg:'#2d001a', stable:false,  networks:[{name:'Polkadot',              fee:'Low'}] },
+  { id:'matic', name:'Polygon',           ticker:'MATIC', icon:'⬡', color:'#9b72ef', bg:'#1e1030', stable:false,  networks:[{name:'Polygon (MATIC)',       fee:'Very low'},{name:'Ethereum (ERC-20)',fee:'Medium'}] },
+  { id:'ltc',   name:'Litecoin',          ticker:'LTC',   icon:'Ł', color:'#bfbfbf', bg:'#252525', stable:false,  networks:[{name:'Litecoin',              fee:'Low'}] },
+  { id:'link',  name:'Chainlink',         ticker:'LINK',  icon:'⬡', color:'#2a5ada', bg:'#0d1535', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'uni',   name:'Uniswap',           ticker:'UNI',   icon:'🦄', color:'#FF007A', bg:'#2d0018', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'aave',  name:'Aave',              ticker:'AAVE',  icon:'Ω', color:'#b6509e', bg:'#2a0f28', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'doge',  name:'Dogecoin',          ticker:'DOGE',  icon:'Ð', color:'#c2a633', bg:'#2a2500', stable:false,  networks:[{name:'Dogecoin',              fee:'Low'}] },
+  { id:'shib',  name:'Shiba Inu',         ticker:'SHIB',  icon:'🐕', color:'#FFA409', bg:'#2a1f00', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'atom',  name:'Cosmos',            ticker:'ATOM',  icon:'⚛', color:'#6f7cba', bg:'#151830', stable:false,  networks:[{name:'Cosmos (IBC)',          fee:'Very low'}] },
+  { id:'xlm',   name:'Stellar',           ticker:'XLM',   icon:'✦', color:'#7db8e8', bg:'#0d1e2a', stable:false,  networks:[{name:'Stellar',               fee:'Very low'}] },
+  { id:'algo',  name:'Algorand',          ticker:'ALGO',  icon:'◇', color:'#00d4c2', bg:'#002a28', stable:false,  networks:[{name:'Algorand',              fee:'Very low'}] },
+  { id:'near',  name:'NEAR Protocol',     ticker:'NEAR',  icon:'Ν', color:'#00c08b', bg:'#002520', stable:false,  networks:[{name:'NEAR Protocol',         fee:'Very low'}] },
+  { id:'ftm',   name:'Fantom',            ticker:'FTM',   icon:'◉', color:'#1969ff', bg:'#0d1535', stable:false,  networks:[{name:'Fantom (Opera)',        fee:'Very low'}] },
+  { id:'eos',   name:'EOS',               ticker:'EOS',   icon:'ε', color:'#443f54', bg:'#1a1820', stable:false,  networks:[{name:'EOS',                   fee:'Very low'}] },
+  { id:'bch',   name:'Bitcoin Cash',      ticker:'BCH',   icon:'₿', color:'#8dc351', bg:'#1a2500', stable:false,  networks:[{name:'Bitcoin Cash',          fee:'Low'}] },
+  { id:'etc',   name:'Ethereum Classic',  ticker:'ETC',   icon:'Ξ', color:'#328432', bg:'#0d200d', stable:false,  networks:[{name:'Ethereum Classic',      fee:'Low'}] },
+  { id:'zec',   name:'Zcash',             ticker:'ZEC',   icon:'ℤ', color:'#F4B728', bg:'#2d2200', stable:false,  networks:[{name:'Zcash',                 fee:'Low'}] },
+  { id:'dash',  name:'Dash',              ticker:'DASH',  icon:'D', color:'#008ce7', bg:'#001e30', stable:false,  networks:[{name:'Dash',                  fee:'Low'}] },
+  { id:'trx',   name:'TRON',              ticker:'TRX',   icon:'◆', color:'#ff0013', bg:'#2d0005', stable:false,  networks:[{name:'Tron (TRC-20)',         fee:'Very low'}] },
+  { id:'comp',  name:'Compound',          ticker:'COMP',  icon:'C', color:'#00d395', bg:'#002a20', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'mkr',   name:'Maker',             ticker:'MKR',   icon:'M', color:'#1aab9b', bg:'#002522', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'snx',   name:'Synthetix',         ticker:'SNX',   icon:'S', color:'#5fcaf9', bg:'#0d2530', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'qnt',   name:'Quant',             ticker:'QNT',   icon:'Q', color:'#1b1b2f', bg:'#1b1b2f', stable:false,  networks:[{name:'Ethereum (ERC-20)',     fee:'Medium'}] },
+  { id:'dai',   name:'Dai',               ticker:'DAI',   icon:'◈', color:'#F5AC37', bg:'#2d2100', stable:true,   networks:[{name:'Ethereum (ERC-20)',fee:'Medium'},{name:'BNB Smart Chain (BEP-20)',fee:'Very low'},{name:'Polygon (MATIC)',fee:'Very low'}] },
+  { id:'tusd',  name:'TrueUSD',           ticker:'TUSD',  icon:'$', color:'#1d5eb5', bg:'#0d1835', stable:true,   networks:[{name:'Ethereum (ERC-20)',fee:'Medium'},{name:'Tron (TRC-20)',fee:'Very low'}] },
+  { id:'celo',  name:'Celo',              ticker:'CELO',  icon:'C', color:'#35D07F', bg:'#0d2a1c', stable:false,  networks:[{name:'Celo',                  fee:'Very low'}] },
+  { id:'hnt',   name:'Helium',            ticker:'HNT',   icon:'H', color:'#474DFF', bg:'#0d0e35', stable:false,  networks:[{name:'Solana (SPL)',          fee:'Very low'}] },
+];
+
+// Demo deposit addresses (illustrative)
+const DEMO_ADDRESSES = {
+  btc:   'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+  eth:   '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',
+  usdt:  { 'Ethereum (ERC-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Arbitrum (ARB)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Tron (TRC-20)':'TQn9Y2khDD3CWrn4SphTHFVtRUr7SxTKce', 'BNB Smart Chain (BEP-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Polygon (MATIC)':'0x4A7d4BE4C31ec3eB9BbA53b66E9e2EC4c0FE8CB3', 'Solana (SPL)':'9xUvGKQzJGxMFAEF1GjYE2m3DgEpFMQdnz6cBEwXGDaP', 'Avalanche C-Chain':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F' },
+  usdc:  { 'Ethereum (ERC-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Arbitrum (ARB)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'BNB Smart Chain (BEP-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Polygon (MATIC)':'0x4A7d4BE4C31ec3eB9BbA53b66E9e2EC4c0FE8CB3', 'Solana (SPL)':'9xUvGKQzJGxMFAEF1GjYE2m3DgEpFMQdnz6cBEwXGDaP', 'Avalanche C-Chain':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F' },
+  dai:   { 'Ethereum (ERC-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'BNB Smart Chain (BEP-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Polygon (MATIC)':'0x4A7d4BE4C31ec3eB9BbA53b66E9e2EC4c0FE8CB3' },
+  tusd:  { 'Ethereum (ERC-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Tron (TRC-20)':'TQn9Y2khDD3CWrn4SphTHFVtRUr7SxTKce' },
+  bnb:   { 'BNB Smart Chain (BEP-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'BNB Beacon Chain (BEP-2)':'bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2' },
+  matic: { 'Polygon (MATIC)':'0x4A7d4BE4C31ec3eB9BbA53b66E9e2EC4c0FE8CB3', 'Ethereum (ERC-20)':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F' },
+  avax:  { 'Avalanche C-Chain':'0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'Avalanche X-Chain':'X-avax1tzdcgj4ehsvhhgpl7zylwpw0qq2zysgvagcrjl' },
+  sol:   '9xUvGKQzJGxMFAEF1GjYE2m3DgEpFMQdnz6cBEwXGDaP',
+  xrp:   'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh',
+  ada:   'addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3jcu5d8ps7zex2k2xt3uqxgjqnnj83ws8lhrn648jjxtwq2ytjqp',
+  ltc:   'LdP8Qox1VAhCzLJNqrr74YovaWYyNBUWvL',
+  dot:   '15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5',
+  doge:  'DH5yaieqoZN36fDVciNyRueRGvGLR3mr7L',
+  bch:   'bitcoincash:qz8s5hnxl7gyjvklpkjfl70dkxpldpq8vsvcs3kjuk',
+  xlm:   'GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5',
+  algo:  'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY5HFKQ',
+  trx:   'TQn9Y2khDD3CWrn4SphTHFVtRUr7SxTKce',
+};
+function getAddress(assetId, network) {
+  const a = DEMO_ADDRESSES[assetId];
+  if (!a) return '0x71C7656EC7ab88b098defB751B7401B5f6d8976F';
+  if (typeof a === 'string') return a;
+  return a[network] || Object.values(a)[0];
+}
+
+// ─── STATE ───
+let selectedAsset = null;
+let selectedNetwork = null;
+let assetOpen = false;
+let networkOpen = false;
+let filteredAssets = [...ASSETS];
+
+// ─── ASSET DROPDOWN ───
+function toggleAssetDropdown() {
+  assetOpen = !assetOpen;
+  const panel = document.getElementById('assetDropdown');
+  const trigger = document.getElementById('assetTrigger');
+  panel.classList.toggle('open', assetOpen);
+  trigger.classList.toggle('open', assetOpen);
+  if (assetOpen) {
+    document.getElementById('assetSearch').focus();
+    document.getElementById('assetSearch').value = '';
+    filteredAssets = [...ASSETS];
+    renderOptions();
+  }
+  if (networkOpen) closeNetworkDropdown();
+}
+function closeAssetDropdown() {
+  assetOpen = false;
+  document.getElementById('assetDropdown').classList.remove('open');
+  document.getElementById('assetTrigger').classList.remove('open');
+}
+
+function filterAssets() {
+  const q = document.getElementById('assetSearch').value.toLowerCase().trim();
+  filteredAssets = q ? ASSETS.filter(a =>
+    a.name.toLowerCase().includes(q) || a.ticker.toLowerCase().includes(q)
+  ) : [...ASSETS];
+  renderOptions();
+}
+
+function renderOptions() {
+  const list = document.getElementById('optionsList');
+  if (filteredAssets.length === 0) {
+    list.innerHTML = '<div class="no-results">No assets found</div>';
+    return;
+  }
+  // Group: stablecoins first if no search, else flat
+  const q = document.getElementById('assetSearch').value.trim();
+  let html = '';
+  if (!q) {
+    const popular = filteredAssets.filter(a => ['btc','eth','usdt','usdc','sol','bnb','xrp'].includes(a.id));
+    const stables = filteredAssets.filter(a => a.stable && !popular.includes(a));
+    const others  = filteredAssets.filter(a => !popular.includes(a) && !stables.includes(a));
+    if (popular.length) { html += `<div class="option-group-label">Popular</div>`; popular.forEach(a => html += optionHTML(a)); }
+    if (stables.length) { html += `<div class="option-group-label">Stablecoins</div>`; stables.forEach(a => html += optionHTML(a)); }
+    if (others.length)  { html += `<div class="option-group-label">All Assets</div>`;  others.forEach(a => html += optionHTML(a)); }
+  } else {
+    filteredAssets.forEach(a => html += optionHTML(a));
+  }
+  list.innerHTML = html;
+}
+
+function optionHTML(asset) {
+  const sel = selectedAsset?.id === asset.id ? 'selected' : '';
+  return `<div class="option-item ${sel}" onclick="selectAsset('${asset.id}')">
+    <div class="option-icon" style="background:${asset.bg};color:${asset.color}">${asset.icon}</div>
+    <div>
+      <div class="option-name">${asset.name}</div>
+      <div class="option-ticker">${asset.ticker}</div>
+    </div>
+    ${asset.stable ? '<div class="option-stable">Stablecoin</div>' : ''}
+  </div>`;
+}
+
+function selectAsset(id) {
+  selectedAsset = ASSETS.find(a => a.id === id);
+  selectedNetwork = selectedAsset.networks[0].name;
+  // Update trigger display
+  const trigger = document.getElementById('assetTrigger');
+  document.getElementById('triggerIcon').textContent = selectedAsset.icon;
+  document.getElementById('triggerIcon').style.background = selectedAsset.bg;
+  document.getElementById('triggerIcon').style.color = selectedAsset.color;
+  const stableBadge = selectedAsset.stable ? `<span class="trigger-badge">Stablecoin</span>` : '';
+  document.getElementById('triggerText').innerHTML = `<strong style="font-weight:700">${selectedAsset.name}</strong> <span style="color:var(--muted);font-weight:400">${selectedAsset.ticker}</span>${stableBadge}`;
+  document.getElementById('triggerText').className = '';
+  closeAssetDropdown();
+  renderNetworkSection();
+  renderQR();
+  // Keep form asset field in sync
+  const fa = document.getElementById('formAsset');
+  if (fa) fa.value = selectedAsset.ticker;
+}
+
+// ─── NETWORK DROPDOWN ───
+function renderNetworkSection() {
+  const section = document.getElementById('networkSection');
+  if (!selectedAsset || selectedAsset.networks.length <= 1) {
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = 'block';
+  updateNetworkTrigger();
+  renderNetworkOptions();
+}
+
+function updateNetworkTrigger() {
+  document.getElementById('networkTriggerText').textContent = selectedNetwork || 'Select network...';
+}
+
+function renderNetworkOptions() {
+  const dd = document.getElementById('networkDropdown');
+  dd.innerHTML = selectedAsset.networks.map(n => `
+    <div class="network-option ${selectedNetwork === n.name ? 'selected' : ''}" onclick="selectNetwork('${n.name}')">
+      <div class="ndot"></div>
+      <span>${n.name}</span>
+      <span class="nfee">${n.fee} fees</span>
+    </div>`).join('');
+}
+
+function toggleNetworkDropdown() {
+  networkOpen = !networkOpen;
+  const dd = document.getElementById('networkDropdown');
+  const trig = document.getElementById('networkTrigger');
+  dd.classList.toggle('open', networkOpen);
+  trig.classList.toggle('open', networkOpen);
+  if (assetOpen) closeAssetDropdown();
+}
+function closeNetworkDropdown() {
+  networkOpen = false;
+  document.getElementById('networkDropdown').classList.remove('open');
+  document.getElementById('networkTrigger').classList.remove('open');
+}
+
+function selectNetwork(name) {
+  selectedNetwork = name;
+  closeNetworkDropdown();
+  updateNetworkTrigger();
+  renderNetworkOptions();
+  renderQR();
+}
+
+// ─── QR ───
+function renderQR() {
+  if (!selectedAsset || !selectedNetwork) return;
+  const address = getAddress(selectedAsset.id, selectedNetwork);
+  document.getElementById('qrPanel').classList.add('visible');
+  document.getElementById('qrPlaceholder').style.display = 'none';
+
+  const iconEl = document.getElementById('qrIcon');
+  iconEl.textContent = selectedAsset.icon;
+  iconEl.style.background = selectedAsset.bg;
+  iconEl.style.color = selectedAsset.color;
+  document.getElementById('qrLabel').textContent = `${selectedAsset.name} (${selectedAsset.ticker})`;
+  document.getElementById('qrNetTag').textContent = selectedNetwork;
+  document.getElementById('addressText').textContent = address;
+  document.getElementById('instrAsset').textContent = selectedAsset.ticker;
+  document.getElementById('instrNet').textContent = selectedNetwork;
+
+  const container = document.getElementById('qrcode');
+  container.innerHTML = '';
+  new QRCode(container, {
+    text: address, width: 190, height: 190,
+    colorDark: '#111318', colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
+  });
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = 'Copy';
+  btn.classList.remove('copied');
+}
+
+function copyAddress() {
+  navigator.clipboard.writeText(document.getElementById('addressText').textContent).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2500);
+  });
+}
+
+// ─── CLOSE ON OUTSIDE CLICK ───
+document.addEventListener('click', e => {
+  if (assetOpen && !document.getElementById('assetWrapper').contains(e.target)) closeAssetDropdown();
+  if (networkOpen && !document.getElementById('networkWrapper').contains(e.target)) closeNetworkDropdown();
+});
+
+function submitForm(btn) {
+  var nameVal     = document.querySelector('.notify-form input[type="text"]').value.trim();
+  var emailVal    = document.querySelector('.notify-form input[type="email"]').value.trim();
+  var assetVal    = document.getElementById('formAsset').value || 'Not specified';
+  var amountVal   = document.querySelectorAll('.notify-form input[type="text"]')[2] ? document.querySelectorAll('.notify-form input[type="text"]')[2].value.trim() : '';
+  var txidVal     = document.querySelector('.notify-form input.mono').value.trim();
+  var categoryEl  = document.getElementById('givingCategory');
+  var categoryVal = categoryEl ? categoryEl.value : 'Not selected';
+  var partnerEl   = document.getElementById('partnerCode');
+  var partnerVal  = partnerEl ? partnerEl.value.trim() : 'N/A';
+  var networkVal  = selectedNetwork || 'Not specified';
+
+  var subjectStr = 'Crypto Donation Notification — ' + (nameVal || 'Anonymous');
+  var bodyStr = 'Crypto Donation Notification\n'
+    + '==============================\n'
+    + 'Name:             ' + (nameVal || 'Not provided') + '\n'
+    + 'Email:            ' + (emailVal || 'Not provided') + '\n'
+    + 'Asset:            ' + assetVal + '\n'
+    + 'Network:          ' + networkVal + '\n'
+    + 'Amount (approx):  ' + (amountVal ? '$' + amountVal + ' USD' : 'Not specified') + '\n'
+    + 'Transaction ID:   ' + (txidVal || 'Not provided') + '\n'
+    + 'Category:         ' + categoryVal + '\n'
+    + 'Partner Code:     ' + (partnerVal || 'N/A') + '\n'
+    + '==============================\n'
+    + 'Sent via The Bay CFC giving page.';
+
+  window.location.href = 'mailto:giving@thebaycfc.org?subject=' + encodeURIComponent(subjectStr) + '&body=' + encodeURIComponent(bodyStr);
+
+  setTimeout(function() {
+    btn.style.display = 'none';
+    var success = document.getElementById('submitSuccess');
+    success.style.display = 'flex';
+    success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 800);
+}
+
+// Init — default to USDC
+renderOptions();
+selectAsset('usdc');
+selectNetwork('Ethereum (ERC-20)');
+</script>
+</body>
+</html>

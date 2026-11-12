@@ -3,511 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Give with Digital Assets — The Bay Christian Family Church</title>
-<meta name="description" content="Give to The Bay Christian Family Church from anywhere in the world, in minutes, using stablecoins or other digital assets.">
-<meta property="og:title" content="Give with Digital Assets — The Bay CFC">
-<meta property="og:description" content="Anyone, anywhere in the world, can give to The Bay in minutes.">
+<title>Give in Digital Assets — The Bay Christian Family Church</title>
+<meta name="description" content="Give to The Bay Christian Family Church in digital assets, from anywhere in the world.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root {
-    --navy: #16295B;
-    --royal: #1F299C;
-    --blue: #0C71C3;
-    --sky: #9CC4EC;
-    --mist: #D6DEEF;
-    --cream: #FAF8F3;
-    --tint: #EEF1F7;
-    --card: #FFFFFF;
-    --line: #DCE2EE;
-    --ink: #16295B;
-    --body: #3D4A6B;
-    --muted: #6B7590;
-    --ok: #1E7F4F;
-    --ok-bg: #E7F4EC;
-    --warn: #9A4B00;
-    --warn-bg: #FFF3E3;
-    --radius: 18px;
+    --navy: #16295B; --royal: #1F299C; --blue: #0C71C3; --sky: #9CC4EC; --mist: #D6DEEF;
+    --cream: #FAF8F3; --tint: #EEF1F7; --card: #FFFFFF; --line: #DCE2EE;
+    --ink: #16295B; --body: #3D4A6B; --muted: #6B7590;
+    --ok: #1E7F4F; --ok-bg: #E7F4EC; --warn: #8A4500; --warn-bg: #FFF3E3;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    background: var(--cream);
-    color: var(--body);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3, .eyebrow, .btn, .tile-name, .step-num { font-family: 'Montserrat', Arial, sans-serif; }
+  body { font-family: 'Open Sans', Arial, sans-serif; background: var(--cream); color: var(--body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  h1, h2, .btn, .tile-name, .step-num, summary { font-family: 'Montserrat', Arial, sans-serif; }
   a { color: var(--blue); }
 
-  /* ── HERO ── */
-  .hero {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--royal) 100%);
-    color: var(--cream);
-    padding: 40px 20px 72px;
-    text-align: center;
-  }
-  .hero::before, .hero::after {
-    content: ''; position: absolute; border-radius: 50%; pointer-events: none;
-  }
-  .hero::before { width: 520px; height: 520px; right: -180px; top: -220px; background: rgba(250,248,243,0.05); }
-  .hero::after  { width: 360px; height: 360px; left: -140px; bottom: -200px; background: rgba(12,113,195,0.28); }
-  .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-  .hero-logo { width: 190px; height: auto; margin: 0 auto 36px; display: block; }
-  .eyebrow {
-    font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sky);
-  }
-  .hero h1 {
-    font-size: clamp(32px, 7vw, 52px); font-weight: 800; line-height: 1.08; color: var(--cream);
-    margin: 14px 0 16px;
-  }
-  .hero p.lead { font-size: 18px; color: var(--mist); max-width: 520px; margin: 0 auto 28px; }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--cream); color: var(--navy); text-decoration: none;
-    font-weight: 700; font-size: 16px; padding: 14px 28px; border-radius: 999px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  }
-  .hero-cta:hover { background: #ffffff; }
-  .hero-facts {
-    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 28px;
-  }
-  .hero-fact {
-    font-size: 13.5px; font-weight: 600; color: var(--cream);
-    background: rgba(250,248,243,0.1); border: 1px solid rgba(250,248,243,0.18);
-    border-radius: 999px; padding: 7px 14px;
-  }
+  .hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy), var(--royal)); color: var(--cream); padding: 36px 20px 76px; text-align: center; }
+  .hero::before { content: ''; position: absolute; width: 480px; height: 480px; right: -180px; top: -220px; border-radius: 50%; background: rgba(250,248,243,0.05); }
+  .hero::after { content: ''; position: absolute; width: 320px; height: 320px; left: -140px; bottom: -190px; border-radius: 50%; background: rgba(12,113,195,0.28); }
+  .hero > * { position: relative; z-index: 1; }
+  .hero img { width: 170px; height: auto; display: block; margin: 0 auto 28px; }
+  .hero h1 { font-size: clamp(30px, 7vw, 46px); font-weight: 800; line-height: 1.1; }
+  .hero p { font-size: 17px; color: var(--mist); margin-top: 10px; }
 
-  /* ── LAYOUT ── */
-  main { max-width: 680px; margin: -40px auto 0; padding: 0 16px 64px; position: relative; z-index: 2; }
-  .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 28px 24px; margin-bottom: 16px; box-shadow: 0 10px 30px rgba(22,41,91,0.06);
-  }
-  .card-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
-  .step-num {
-    width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--cream);
-    font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .card h2 { font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.25; }
-  .card .sub { font-size: 15px; color: var(--muted); margin: 0 0 20px 48px; }
-  @media (max-width: 480px) { .card .sub { margin-left: 0; } .card { padding: 22px 18px; } }
+  main { max-width: 640px; margin: -44px auto 0; padding: 0 16px 48px; position: relative; z-index: 2; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 22px; margin-bottom: 14px; box-shadow: 0 10px 30px rgba(22,41,91,0.06); }
+  .head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--cream); font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .card h2 { font-size: 20px; font-weight: 700; color: var(--ink); }
+  .note { font-size: 14.5px; color: var(--muted); margin: -6px 0 14px; }
 
-  /* ── STEP 1: ASSET TILES ── */
-  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .tile {
-    display: flex; align-items: center; gap: 12px; text-align: left;
-    background: var(--cream); border: 2px solid var(--line); border-radius: 14px;
-    padding: 14px; cursor: pointer; font: inherit; color: inherit; width: 100%;
-    transition: border-color .15s, background .15s;
-  }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tile { display: flex; align-items: center; gap: 12px; text-align: left; background: var(--cream); border: 2px solid var(--line); border-radius: 14px; padding: 13px; cursor: pointer; font: inherit; color: inherit; width: 100%; }
   .tile:hover { border-color: var(--sky); }
   .tile[aria-pressed="true"] { border-color: var(--royal); background: var(--tint); }
-  .tile-icon {
-    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 18px; color: #fff;
-  }
+  .tile img { width: 38px; height: 38px; flex-shrink: 0; }
   .tile-name { display: block; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.2; }
-  .tile-note { display: block; font-size: 13px; color: var(--muted); line-height: 1.35; }
-  .tile-badge {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em;
-    color: var(--ok); background: var(--ok-bg); border-radius: 6px; padding: 1px 7px; margin-top: 4px;
-  }
-  .more-row { margin-top: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .more-row label { font-size: 14px; font-weight: 600; color: var(--muted); }
-  select, input, textarea {
-    font: inherit; color: var(--ink); background: var(--cream);
-    border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 13px; width: 100%;
-    outline: none; transition: border-color .15s;
-  }
-  select:focus, input:focus, textarea:focus { border-color: var(--blue); }
-  .more-row select { width: auto; min-width: 220px; flex: 1; }
-  .hint-box {
-    margin-top: 16px; background: var(--tint); border-radius: 12px; padding: 14px 16px;
-    font-size: 14.5px; color: var(--body);
-  }
-  .hint-box strong { color: var(--ink); }
+  .tile-sub { display: block; font-size: 13px; color: var(--muted); }
+  select, input { font: inherit; color: var(--ink); background: var(--cream); border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 13px; width: 100%; outline: none; }
+  select:focus, input:focus { border-color: var(--blue); }
+  #moreSelect { margin-top: 10px; }
 
-  /* ── STEP 2: NETWORK ── */
-  .networks { display: flex; flex-wrap: wrap; gap: 10px; }
-  .net {
-    font: inherit; font-size: 14.5px; font-weight: 600; color: var(--ink);
-    background: var(--cream); border: 2px solid var(--line); border-radius: 999px;
-    padding: 9px 16px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
-  }
+  .networks { display: flex; flex-wrap: wrap; gap: 8px; }
+  .net { font: inherit; font-size: 14.5px; font-weight: 600; color: var(--ink); background: var(--cream); border: 2px solid var(--line); border-radius: 999px; padding: 8px 15px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
   .net:hover { border-color: var(--sky); }
   .net[aria-pressed="true"] { border-color: var(--royal); background: var(--tint); }
   .net small { font-size: 12px; font-weight: 700; color: var(--ok); }
 
-  /* ── STEP 3: QR ── */
-  .qr-wrap { text-align: center; }
-  .qr-title { font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; color: var(--ink); font-size: 17px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .qr-title img { width: 28px; height: 28px; }
-  .qr-sub { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
-  #qrBox {
-    display: inline-block; padding: 14px; background: #fff; border-radius: 16px;
-    border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(22,41,91,0.08); margin-bottom: 18px;
-  }
+  .send { text-align: center; }
+  .send-title { display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; color: var(--ink); font-size: 17px; }
+  .send-title img { width: 28px; height: 28px; }
+  .send-sub { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+  #qrBox { display: inline-block; padding: 12px; background: #fff; border-radius: 16px; border: 1px solid var(--line); margin-bottom: 16px; }
   #qrcode img, #qrcode canvas { display: block; }
-  .address {
-    display: flex; align-items: center; gap: 10px; text-align: left;
-    background: var(--cream); border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 10px 10px 14px;
-  }
-  .address code {
-    flex: 1; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 13px; color: var(--ink); word-break: break-all; line-height: 1.5;
-  }
-  .btn {
-    font-weight: 700; font-size: 14.5px; border: none; cursor: pointer;
-    background: var(--navy); color: var(--cream); border-radius: 10px; padding: 11px 18px;
-    transition: background .15s;
-  }
+  .address { display: flex; align-items: center; gap: 10px; text-align: left; background: var(--cream); border: 1.5px solid var(--line); border-radius: 12px; padding: 9px 9px 9px 14px; }
+  .address code { flex: 1; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; color: var(--ink); word-break: break-all; }
+  .btn { font-weight: 700; font-size: 15px; border: none; cursor: pointer; background: var(--navy); color: var(--cream); border-radius: 10px; padding: 11px 18px; }
   .btn:hover { background: var(--royal); }
-  .btn.done { background: var(--ok); }
-  .preview-note { font-size: 13px; color: var(--muted); margin-top: 8px; }
-  .checks { list-style: none; margin-top: 18px; text-align: left; display: grid; gap: 10px; }
-  .checks li {
-    display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px;
-    background: var(--warn-bg); color: #5C3200; border-radius: 10px; padding: 11px 14px;
-  }
-  .checks li b { color: var(--warn); }
-  .checks .ico { flex-shrink: 0; font-weight: 800; color: var(--warn); }
+  .btn.ok { background: var(--ok); }
+  .btn.wide { width: 100%; padding: 15px; font-size: 16px; border-radius: 12px; margin-top: 14px; }
+  .btn:disabled { opacity: .6; cursor: default; }
+  .warn { margin-top: 12px; text-align: left; font-size: 14px; color: var(--warn); background: var(--warn-bg); border-radius: 10px; padding: 10px 14px; }
+  .warn b { color: #5C3200; }
+  .preview { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
-  /* ── HOW / FAQ ── */
-  .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  @media (max-width: 560px) { .how { grid-template-columns: 1fr; } }
-  .how div { background: var(--tint); border-radius: 14px; padding: 16px; }
-  .how b { display: block; font-family: 'Montserrat', Arial, sans-serif; color: var(--ink); font-size: 15px; margin-bottom: 4px; }
-  .how span { font-size: 14px; color: var(--body); }
-  details { border-top: 1px solid var(--line); }
-  details:last-of-type { border-bottom: 1px solid var(--line); }
-  summary {
-    list-style: none; cursor: pointer; padding: 16px 32px 16px 0; position: relative;
-    font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; font-size: 15.5px; color: var(--ink);
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary::after {
-    content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
-    font-size: 22px; font-weight: 600; color: var(--blue);
-  }
-  details[open] summary::after { content: '–'; }
-  details p { font-size: 15px; padding: 0 0 16px; }
+  .status { display: none; margin-top: 14px; border-radius: 12px; padding: 16px; text-align: left; }
+  .status.checking { display: flex; align-items: center; gap: 12px; background: var(--tint); color: var(--ink); font-weight: 600; }
+  .status.done { display: block; background: var(--ok-bg); color: var(--ok); }
+  .status.done b { display: block; font-family: 'Montserrat', Arial, sans-serif; font-size: 18px; margin-bottom: 4px; }
+  .status.done span { display: block; font-size: 14px; color: #2C5A42; }
+  .status code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+  .spinner { width: 22px; height: 22px; border: 3px solid var(--mist); border-top-color: var(--royal); border-radius: 50%; animation: spin .8s linear infinite; flex-shrink: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ── FORM ── */
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 520px) { .form-grid { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field.full { grid-column: 1 / -1; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 5px; }
   .field label { font-size: 14px; font-weight: 600; color: var(--ink); }
   .field label span { font-weight: 400; color: var(--muted); }
-  .amount { display: flex; gap: 8px; }
-  .amount select { width: 96px; flex-shrink: 0; }
-  .submit { width: 100%; margin-top: 18px; padding: 15px; font-size: 16px; border-radius: 12px; }
-  .success {
-    display: none; margin-top: 14px; padding: 14px 16px; border-radius: 12px;
-    background: var(--ok-bg); color: var(--ok); font-weight: 600; text-align: center;
-  }
+  .sent { display: none; margin-top: 12px; padding: 13px 16px; border-radius: 12px; background: var(--ok-bg); color: var(--ok); font-weight: 600; text-align: center; }
 
-  /* ── OTHER WAYS + FOOTER ── */
-  .ways { display: flex; flex-wrap: wrap; gap: 10px; }
-  .ways a {
-    text-decoration: none; font-weight: 600; font-size: 14.5px; color: var(--ink);
-    background: var(--tint); border-radius: 999px; padding: 9px 16px;
-  }
-  .ways a:hover { background: var(--mist); }
-  footer { text-align: center; padding: 8px 16px 48px; color: var(--muted); font-size: 14px; }
-  footer img { width: 150px; height: auto; display: block; margin: 0 auto 14px; }
-  footer .contact { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 10px; }
-  footer .small { font-size: 12.5px; max-width: 520px; margin: 0 auto; }
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  details { border-top: 1px solid var(--line); }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { list-style: none; cursor: pointer; padding: 14px 28px 14px 0; position: relative; font-weight: 700; font-size: 15px; color: var(--ink); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--blue); }
+  details[open] summary::after { content: '–'; }
+  details p { font-size: 14.5px; padding-bottom: 14px; }
+
+  footer { text-align: center; padding: 4px 16px 44px; color: var(--muted); font-size: 14px; }
+  footer img { width: 140px; height: auto; display: block; margin: 0 auto 12px; }
+  footer .links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  footer .small { font-size: 12.5px; }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="hero-inner">
-    <img class="hero-logo" src="assets/logo-white.png" alt="The Bay Christian Family Church">
-    <div class="eyebrow">Love is King</div>
-    <h1>Give from anywhere in the world</h1>
-    <p class="lead">Send your tithe or offering with digital dollars (stablecoins) or other digital assets. It reaches The Bay in minutes.</p>
-    <a class="hero-cta" href="#give">Give now <span aria-hidden="true">↓</span></a>
-    <div class="hero-facts">
-      <span class="hero-fact">Arrives in minutes</span>
-      <span class="hero-fact">Low fees</span>
-      <span class="hero-fact">No bank transfer needed</span>
-    </div>
-  </div>
+  <img src="assets/logo-white.png" alt="The Bay Christian Family Church">
+  <h1>Give in digital assets</h1>
+  <p>From anywhere in the world. Arrives in minutes.</p>
 </header>
 
 <main>
 
-  <!-- HOW IT WORKS -->
-  <section class="card" aria-labelledby="howTitle">
-    <div class="card-head"><h2 id="howTitle">How it works</h2></div>
-    <p class="sub" style="margin-left:0">If you can send a payment from an app, you can do this.</p>
-    <div class="how">
-      <div><b>1. Choose</b><span>Pick what you’re giving. Not sure? Choose USDC, a digital dollar.</span></div>
-      <div><b>2. Scan</b><span>Open your crypto app or exchange, tap Send, and scan our code.</span></div>
-      <div><b>3. Let us know</b><span>Fill in the short form so we can thank you and record your gift.</span></div>
-    </div>
+  <section class="card" aria-labelledby="s1">
+    <div class="head"><div class="step-num">1</div><h2 id="s1">Choose asset</h2></div>
+    <div class="tiles" id="tiles" role="group" aria-label="Asset"></div>
+    <select id="moreSelect" aria-label="Other assets" onchange="if(this.value) selectAsset(this.value)">
+      <option value="">Other assets</option>
+    </select>
   </section>
 
-  <!-- STEP 1 -->
-  <section class="card" id="give" aria-labelledby="s1">
-    <div class="card-head"><div class="step-num">1</div><h2 id="s1">What would you like to give?</h2></div>
-    <p class="sub">Choose the digital asset you have in your app.</p>
-    <div class="tiles" id="tiles" role="group" aria-label="Digital asset"></div>
-    <div class="more-row">
-      <label for="moreSelect">Something else?</label>
-      <select id="moreSelect" onchange="if(this.value) selectAsset(this.value)">
-        <option value="">More digital assets…</option>
-      </select>
-    </div>
-    <div class="hint-box" id="assetHint"></div>
-  </section>
-
-  <!-- STEP 2 -->
   <section class="card" id="netCard" aria-labelledby="s2">
-    <div class="card-head"><div class="step-num">2</div><h2 id="s2">Which network?</h2></div>
-    <p class="sub">Your app will ask this when you send. Pick the <b>same</b> network here and there.</p>
+    <div class="head"><div class="step-num">2</div><h2 id="s2">Choose network</h2></div>
+    <p class="note">Use the same network in your app.</p>
     <div class="networks" id="networks" role="group" aria-label="Network"></div>
-    <div class="hint-box">Not sure? Choose one marked <b style="color:var(--ok)">Lowest fees</b>, as long as your app offers it too.</div>
   </section>
 
-  <!-- STEP 3 -->
   <section class="card" aria-labelledby="s3">
-    <div class="card-head"><div class="step-num" id="s3num">3</div><h2 id="s3">Scan or copy our address</h2></div>
-    <p class="sub">In your app, tap <b>Send</b>, scan this code, enter your amount and confirm.</p>
-    <div class="qr-wrap">
-      <div class="qr-title" id="qrTitle"></div>
-      <div class="qr-sub" id="qrSub"></div>
-      <div id="qrBox"><div id="qrcode" aria-label="QR code of the giving address"></div></div>
+    <div class="head"><div class="step-num" id="n3">3</div><h2 id="s3">Send</h2></div>
+    <p class="note">In your app, tap Send and scan the code.</p>
+    <div class="send">
+      <div class="send-title" id="sendTitle"></div>
+      <div class="send-sub" id="sendSub"></div>
+      <div id="qrBox"><div id="qrcode"></div></div>
       <div class="address">
         <code id="address"></code>
         <button class="btn" id="copyBtn" onclick="copyAddress()">Copy</button>
       </div>
-      <p class="preview-note" id="previewNote" hidden>Our live giving addresses will appear here once the church’s exchange account is open.</p>
-      <ul class="checks">
-        <li><span class="ico">!</span><span>Send only <b id="chkAsset"></b> on the <b id="chkNet"></b> network. Anything else can’t be recovered.</span></li>
-        <li><span class="ico">!</span><span>Check the first and last few characters of the address in your app before you confirm.</span></li>
-      </ul>
+      <p class="preview" id="previewNote" hidden>Live address coming soon.</p>
+      <div class="warn">Send only <b id="wAsset"></b> on <b id="wNet"></b>. Anything else will be lost.</div>
+      <button class="btn wide" id="sentBtn" onclick="iSent()">I’ve sent it</button>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
     </div>
   </section>
 
-  <!-- STEP 4 -->
-  <section class="card" aria-labelledby="s4">
-    <div class="card-head"><div class="step-num" id="s4num">4</div><h2 id="s4">Let us know you gave</h2></div>
-    <p class="sub">So we can thank you and record your gift. This opens an email to our giving team.</p>
-    <form id="notifyForm" onsubmit="return submitForm(event)">
-      <div class="form-grid">
-        <div class="field"><label for="fName">Your name</label><input id="fName" autocomplete="name" placeholder="Full name"></div>
-        <div class="field"><label for="fEmail">Email</label><input id="fEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+  <section class="card" id="detailsCard" aria-labelledby="s4" hidden>
+    <div class="head"><div class="step-num" id="n4">4</div><h2 id="s4">Your details</h2></div>
+    <p class="note">For your receipt.</p>
+    <form onsubmit="return submitForm(event)">
+      <div class="grid">
+        <div class="field"><label for="fName">Name</label><input id="fName" autocomplete="name"></div>
+        <div class="field"><label for="fEmail">Email</label><input id="fEmail" type="email" autocomplete="email"></div>
         <div class="field">
-          <label for="fCategory">What is it for?</label>
-          <select id="fCategory">
-            <option>Tithes</option><option>Seed</option><option>Building Fund</option>
-            <option>TV Ministry</option><option>Welfare Projects</option><option>First Fruits</option><option>Other</option>
-          </select>
+          <label for="fCategory">Giving for</label>
+          <select id="fCategory"><option>Tithes</option><option>Seed</option><option>Building Fund</option><option>TV Ministry</option><option>Welfare Projects</option><option>First Fruits</option><option>Other</option></select>
         </div>
-        <div class="field">
-          <label for="fAmount">Amount <span>(roughly)</span></label>
-          <div class="amount">
-            <select id="fCurrency" aria-label="Currency"><option>USD</option><option>GBP</option><option>EUR</option><option>AUD</option><option>CAD</option><option>ZAR</option></select>
-            <input id="fAmount" inputmode="decimal" placeholder="e.g. 100">
-          </div>
-        </div>
-        <div class="field"><label for="fCountry">Country you’re giving from</label><input id="fCountry" autocomplete="country-name" placeholder="e.g. United Kingdom"></div>
-        <div class="field"><label for="fPartner">Partner code <span>(optional)</span></label><input id="fPartner" placeholder="If you have one"></div>
-        <div class="field full"><label for="fTx">Transaction ID <span>(optional, shown in your app after sending)</span></label><input id="fTx" placeholder="Paste it here if you can"></div>
+        <div class="field"><label for="fPartner">Partner code <span>(optional)</span></label><input id="fPartner"></div>
       </div>
-      <button class="btn submit" type="submit">Send my gift details</button>
-      <div class="success" id="success">Thank you for your generosity! Please send the email that just opened, and we’ll be in touch.</div>
+      <button class="btn wide" type="submit">Send</button>
+      <div class="sent" id="sent">Thank you.</div>
     </form>
   </section>
 
-  <!-- FAQ -->
-  <section class="card" aria-labelledby="faqTitle">
-    <div class="card-head"><h2 id="faqTitle">Questions</h2></div>
-    <p class="sub" style="margin-left:0">New to digital assets? Start here.</p>
-    <details>
-      <summary>What is a stablecoin?</summary>
-      <p>A digital dollar. Each USDC or USDT is designed to always be worth one US dollar, so the value doesn’t jump around like Bitcoin. It’s the simplest way to give across borders.</p>
-    </details>
-    <details>
-      <summary>What app do I need?</summary>
-      <p>Any app that holds digital assets and can send them, such as Coinbase, Binance, Kraken, Revolut, Luno, VALR, MetaMask or Trust Wallet. If your app shows a “Send” or “Withdraw” button, you’re ready.</p>
-    </details>
-    <details>
-      <summary>How long does it take, and what does it cost?</summary>
-      <p>Usually a few minutes. You pay a small network fee, often cents on the networks marked “Lowest fees”. Your app shows the exact fee before you confirm.</p>
-    </details>
-    <details>
-      <summary>Is it safe? Where does my gift go?</summary>
-      <p>Your gift goes to The Bay’s account at a South African exchange licensed by the Financial Sector Conduct Authority (FSCA). The church converts every gift to rand the same day, so its value is locked in.</p>
-    </details>
-    <details>
-      <summary>I sent the wrong coin or network. What now?</summary>
-      <p>Email <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a> with your transaction ID straight away. Some mistakes can be fixed by the exchange, but not all, which is why it’s worth checking before you send.</p>
-    </details>
-    <details>
-      <summary>Will I get a receipt?</summary>
-      <p>Yes. Fill in the form above and our giving team will acknowledge your gift. Tax rules differ by country, so please check with your own adviser about any deductions.</p>
-    </details>
-  </section>
-
-  <!-- OTHER WAYS -->
-  <section class="card" aria-labelledby="otherTitle">
-    <div class="card-head"><h2 id="otherTitle">Other ways to give</h2></div>
-    <p class="sub" style="margin-left:0">Prefer something familiar? All our usual options are still here.</p>
-    <div class="ways">
-      <a href="https://thebaycfc.org/product/giving/">Bank transfer (EFT)</a>
-      <a href="https://thebaycfc.org/product/giving/">Card</a>
-      <a href="https://thebaycfc.org/product/giving/">Zapper</a>
-      <a href="https://thebaycfc.org/product/giving/">SnapScan</a>
-    </div>
+  <section class="card" aria-labelledby="faq">
+    <div class="head"><h2 id="faq">Questions</h2></div>
+    <details><summary>What is a stablecoin?</summary><p>A digital dollar. 1 USDC or 1 USDT is worth US$1.</p></details>
+    <details><summary>Which app can I use?</summary><p>Any app that can send crypto, such as Coinbase, Binance, Revolut, Luno, VALR or MetaMask.</p></details>
+    <details><summary>What does it cost?</summary><p>A small network fee, shown in your app before you send.</p></details>
+    <details><summary>Where does my gift go?</summary><p>To the church’s account at an FSCA-licensed South African exchange. It is converted to rand the same day.</p></details>
   </section>
 
 </main>
 
 <footer>
   <img src="assets/logo-navy.png" alt="The Bay Christian Family Church">
-  <div class="contact">
+  <div class="links">
     <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a>
     <a href="tel:+27218537771">+27 21 853 7771</a>
-    <a href="https://thebaycfc.org">thebaycfc.org</a>
+    <a href="https://thebaycfc.org/product/giving/">Other ways to give</a>
   </div>
-  <p class="small">Gifts are received through an FSCA-licensed South African exchange (VALR or Luno) and converted to rand. PBO No. [insert] · NPC [insert]</p>
+  <p class="small">PBO No. [insert] · NPC [insert]</p>
 </footer>
 
 <script>
 // ─────────────────────────────────────────────────────────────
-// SETUP: once the church's VALR or Luno business account is open,
-// replace each "PREVIEW" value below with the real deposit address
-// for that asset and network, exactly as the exchange shows it.
-// Remove any asset or network the chosen exchange doesn't support.
-// Until then, the page shows a preview code that wallets will reject.
+// LIVE SETUP: replace each 'PREVIEW' with the real deposit address
+// from the church's VALR or Luno account, and remove any asset or
+// network the exchange doesn't support.
+//
+// DEMO MODE (?demo in the URL): shows realistic-looking demo addresses
+// and simulates the payment being detected. The demo addresses have
+// deliberately broken checksums or invalid characters, so wallets and
+// exchanges will refuse to send to them. Never use them as real addresses.
 // ─────────────────────────────────────────────────────────────
+const DEMO = new URLSearchParams(location.search).has('demo');
+
+const DEMO_ADDR = {
+  evm:  '0x44F56be308911Cb2EbAdE97cb393F15e5D94f195',
+  tron: 'TUcnoeHmEpvJTo7QjibeDEeEvv7qdvF4Q1',
+  sol:  '5J5nd4cPeAqzNZ41k34PiyluFWYUYW23cmniJM5hLSKD',
+  btc:  'bc1qjf35yn6m7w5zw9q6edpppmly6ran64hetajt2q',
+  xrp:  'r97Bi16A4UTDaXopXV3EDJv6oomq7HoJVr',
+  ltc:  'ltc1qwlwvwuswfr2sarah0s24wtzawjlr37lye2ynmq',
+};
+
 const ASSETS = [
-  { id:'usdc', name:'USD Coin', ticker:'USDC', icon:'$', color:'#2775CA', featured:true, stable:true,
-    note:'Digital dollar', networks:[
-      { name:'Solana',            fee:'low', address:'PREVIEW' },
-      { name:'Ethereum (ERC-20)', fee:'high', address:'PREVIEW' },
-      { name:'Polygon',           fee:'low', address:'PREVIEW' },
-      { name:'Arbitrum',          fee:'low', address:'PREVIEW' } ] },
-  { id:'usdt', name:'Tether', ticker:'USDT', icon:'₮', color:'#26A17B', featured:true, stable:true,
-    note:'Digital dollar', networks:[
-      { name:'Tron (TRC-20)',     fee:'low', address:'PREVIEW' },
-      { name:'Ethereum (ERC-20)', fee:'high', address:'PREVIEW' },
-      { name:'Solana',            fee:'low', address:'PREVIEW' },
-      { name:'Polygon',           fee:'low', address:'PREVIEW' } ] },
-  { id:'btc', name:'Bitcoin', ticker:'BTC', icon:'₿', color:'#E8890C', featured:true,
-    note:'The original', networks:[ { name:'Bitcoin', fee:'medium', address:'PREVIEW' } ] },
-  { id:'eth', name:'Ethereum', ticker:'ETH', icon:'Ξ', color:'#5B6CD8', featured:true,
-    note:'Ether', networks:[
-      { name:'Ethereum (ERC-20)', fee:'high', address:'PREVIEW' },
-      { name:'Arbitrum',          fee:'low', address:'PREVIEW' } ] },
-  { id:'sol', name:'Solana', ticker:'SOL', icon:'◎', color:'#7B3FE4', networks:[ { name:'Solana', fee:'low', address:'PREVIEW' } ] },
-  { id:'xrp', name:'XRP', ticker:'XRP', icon:'✕', color:'#23292F', needsTag:true, networks:[ { name:'XRP Ledger', fee:'low', address:'PREVIEW' } ] },
-  { id:'ltc', name:'Litecoin', ticker:'LTC', icon:'Ł', color:'#345D9D', networks:[ { name:'Litecoin', fee:'low', address:'PREVIEW' } ] },
+  { id:'usdc', name:'USD Coin', ticker:'USDC', sub:'Digital dollar', featured:true, networks:[
+      { name:'Solana', low:true, kind:'sol', address:'PREVIEW' },
+      { name:'Ethereum', kind:'evm', address:'PREVIEW' },
+      { name:'Polygon', low:true, kind:'evm', address:'PREVIEW' },
+      { name:'Arbitrum', low:true, kind:'evm', address:'PREVIEW' } ] },
+  { id:'usdt', name:'Tether', ticker:'USDT', sub:'Digital dollar', featured:true, networks:[
+      { name:'Tron', low:true, kind:'tron', address:'PREVIEW' },
+      { name:'Ethereum', kind:'evm', address:'PREVIEW' },
+      { name:'Solana', low:true, kind:'sol', address:'PREVIEW' },
+      { name:'Polygon', low:true, kind:'evm', address:'PREVIEW' } ] },
+  { id:'btc', name:'Bitcoin', ticker:'BTC', sub:'Bitcoin', featured:true, networks:[ { name:'Bitcoin', kind:'btc', address:'PREVIEW' } ] },
+  { id:'eth', name:'Ethereum', ticker:'ETH', sub:'Ether', featured:true, networks:[
+      { name:'Ethereum', kind:'evm', address:'PREVIEW' },
+      { name:'Arbitrum', low:true, kind:'evm', address:'PREVIEW' } ] },
+  { id:'sol', name:'Solana', ticker:'SOL', networks:[ { name:'Solana', low:true, kind:'sol', address:'PREVIEW' } ] },
+  { id:'xrp', name:'XRP', ticker:'XRP', networks:[ { name:'XRP Ledger', low:true, kind:'xrp', address:'PREVIEW' } ] },
+  { id:'ltc', name:'Litecoin', ticker:'LTC', networks:[ { name:'Litecoin', low:true, kind:'ltc', address:'PREVIEW' } ] },
 ];
 
-let asset = null, network = null;
+let asset = null, network = null, checking = false;
+const el = id => document.getElementById(id);
 
-function el(id) { return document.getElementById(id); }
+function addressFor(n) {
+  if (n.address !== 'PREVIEW') return n.address;
+  return DEMO ? DEMO_ADDR[n.kind] : null;
+}
 
 function renderTiles() {
   el('tiles').innerHTML = ASSETS.filter(a => a.featured).map(a => `
     <button type="button" class="tile" data-id="${a.id}" aria-pressed="false" onclick="selectAsset('${a.id}')">
-      <img class="tile-icon" src="assets/coins/${a.id}.svg" alt="" width="40" height="40">
-      <span>
-        <span class="tile-name">${a.ticker}</span>
-        <span class="tile-note">${a.note}</span>
-        ${a.id === 'usdc' ? '<span class="tile-badge">Easiest</span>' : ''}
-      </span>
+      <img src="assets/coins/${a.id}.svg" alt="" width="38" height="38">
+      <span><span class="tile-name">${a.ticker}</span><span class="tile-sub">${a.sub}</span></span>
     </button>`).join('');
-  const more = el('moreSelect');
   ASSETS.filter(a => !a.featured).forEach(a => {
-    const o = document.createElement('option'); o.value = a.id; o.textContent = `${a.name} (${a.ticker})`; more.appendChild(o);
+    const o = document.createElement('option'); o.value = a.id; o.textContent = `${a.name} (${a.ticker})`; el('moreSelect').appendChild(o);
   });
 }
 
 function selectAsset(id) {
   asset = ASSETS.find(a => a.id === id);
   network = asset.networks[0];
-  document.querySelectorAll('.tile').forEach(t => t.setAttribute('aria-pressed', t.dataset.id === id ? 'true' : 'false'));
+  document.querySelectorAll('.tile').forEach(t => t.setAttribute('aria-pressed', String(t.dataset.id === id)));
   el('moreSelect').value = asset.featured ? '' : id;
-  el('assetHint').innerHTML = asset.stable
-    ? `<strong>${asset.ticker} is a digital dollar.</strong> 1 ${asset.ticker} is designed to equal US$1, so what you give is what we receive.`
-    : `<strong>${asset.name} goes up and down in value.</strong> We convert it to rand the day it arrives.`;
   renderNetworks();
-  renderQR();
+  renderSend();
 }
 
 function renderNetworks() {
   const multi = asset.networks.length > 1;
-  el('netCard').style.display = multi ? '' : 'none';
-  el('s3num').textContent = multi ? '3' : '2';
-  el('s4num').textContent = multi ? '4' : '3';
+  el('netCard').hidden = !multi;
+  el('n3').textContent = multi ? '3' : '2';
+  el('n4').textContent = multi ? '4' : '3';
   el('networks').innerHTML = asset.networks.map((n, i) => `
-    <button type="button" class="net" aria-pressed="${n === network}" onclick="selectNetwork(${i})">
-      ${n.name}${n.fee === 'low' ? ' <small>Lowest fees</small>' : ''}
-    </button>`).join('');
+    <button type="button" class="net" aria-pressed="${n === network}" onclick="selectNetwork(${i})">${n.name}${n.low ? ' <small>Low fee</small>' : ''}</button>`).join('');
 }
 
-function selectNetwork(i) {
-  network = asset.networks[i];
-  renderNetworks();
-  renderQR();
-}
+function selectNetwork(i) { network = asset.networks[i]; renderNetworks(); renderSend(); }
 
-function renderQR() {
-  const preview = network.address === 'PREVIEW';
-  const addr = preview ? `PREVIEW-${asset.ticker}-${network.name.replace(/[^A-Za-z0-9]/g,'')}-NOT-ACTIVE` : network.address;
-  el('qrTitle').innerHTML = `<img src="assets/coins/${asset.id}.svg" alt=""> ${asset.name} (${asset.ticker})`;
-  el('qrSub').textContent = `on the ${network.name} network`;
-  el('address').textContent = addr;
-  el('chkAsset').textContent = asset.ticker;
-  el('chkNet').textContent = network.name;
-  el('previewNote').hidden = !preview;
+function renderSend() {
+  const addr = addressFor(network);
+  el('sendTitle').innerHTML = `<img src="assets/coins/${asset.id}.svg" alt=""> ${asset.ticker}`;
+  el('sendSub').textContent = `on ${network.name}`;
+  el('wAsset').textContent = asset.ticker;
+  el('wNet').textContent = network.name;
+  el('previewNote').hidden = !!addr;
+  el('address').textContent = addr || '—';
+  el('copyBtn').disabled = !addr;
+  el('sentBtn').disabled = !addr;
   const box = el('qrcode'); box.innerHTML = '';
-  new QRCode(box, { text: addr, width: 200, height: 200, colorDark: '#16295B', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
-  const btn = el('copyBtn'); btn.textContent = 'Copy'; btn.classList.remove('done');
+  if (addr) new QRCode(box, { text: addr, width: 200, height: 200, colorDark: '#16295B', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+  else box.innerHTML = '<div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;color:#6B7590;font-size:14px">Coming soon</div>';
+  resetStatus();
 }
 
 function copyAddress() {
-  const text = el('address').textContent;
-  const done = () => { const b = el('copyBtn'); b.textContent = 'Copied'; b.classList.add('done');
-    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('done'); }, 2500); };
-  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done).catch(() => {});
+  const b = el('copyBtn');
+  navigator.clipboard && navigator.clipboard.writeText(el('address').textContent).then(() => {
+    b.textContent = 'Copied'; b.classList.add('ok');
+    setTimeout(() => { b.textContent = 'Copy'; b.classList.remove('ok'); }, 2000);
+  });
+}
+
+function resetStatus() {
+  checking = false;
+  el('status').className = 'status'; el('status').innerHTML = '';
+  el('sentBtn').hidden = false;
+}
+
+function fakeTx(kind) {
+  const hex = n => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => b.toString(16).padStart(2, '0')).join('');
+  const t = kind === 'evm' ? '0x' + hex(32) : hex(32);
+  return t.slice(0, 8) + '…' + t.slice(-6);
+}
+
+function iSent() {
+  if (checking) return;
+  el('sentBtn').hidden = true;
+  const s = el('status');
+  if (!DEMO) {
+    s.className = 'status done';
+    s.innerHTML = '<b>Thank you</b><span>We’ll confirm once it arrives. Add your details below for a receipt.</span>';
+    showDetails();
+    return;
+  }
+  checking = true;
+  s.className = 'status checking';
+  s.innerHTML = '<div class="spinner"></div><span>Checking the network…</span>';
+  const a = asset, n = network;
+  setTimeout(() => {
+    if (!checking || a !== asset || n !== network) return;
+    checking = false;
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    s.className = 'status done';
+    s.innerHTML = `<b>✓ Gift received</b><span>${a.ticker} on ${n.name} · ${time}</span><span>Transaction <code>${fakeTx(n.kind)}</code></span>`;
+    showDetails();
+  }, 2500 + Math.random() * 2000);
+}
+
+function showDetails() {
+  el('detailsCard').hidden = false;
+  setTimeout(() => el('detailsCard').scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
 }
 
 function submitForm(e) {
   e.preventDefault();
   const v = id => el(id).value.trim();
-  const amount = v('fAmount') ? `${v('fCurrency')} ${v('fAmount')}` : 'Not given';
-  const subject = 'Digital asset gift: ' + (v('fName') || 'Anonymous');
   const body = [
-    'Digital asset gift notification',
-    '',
-    'Name: ' + (v('fName') || 'Not given'),
-    'Email: ' + (v('fEmail') || 'Not given'),
-    'Giving from: ' + (v('fCountry') || 'Not given'),
-    'For: ' + v('fCategory'),
-    'Asset: ' + (asset ? asset.ticker : 'Not given'),
-    'Network: ' + (network ? network.name : 'Not given'),
-    'Amount (approx.): ' + amount,
-    'Transaction ID: ' + (v('fTx') || 'Not given'),
-    'Partner code: ' + (v('fPartner') || 'None'),
-    '',
-    'Sent from the Bay CFC digital giving page.'
+    'Name: ' + (v('fName') || '-'),
+    'Email: ' + (v('fEmail') || '-'),
+    'Giving for: ' + v('fCategory'),
+    'Asset: ' + asset.ticker + ' on ' + network.name,
+    'Partner code: ' + (v('fPartner') || '-'),
   ].join('\n');
-  window.location.href = 'mailto:giving@thebaycfc.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  setTimeout(() => { el('success').style.display = 'block'; }, 600);
+  location.href = 'mailto:giving@thebaycfc.org?subject=' + encodeURIComponent('Digital asset gift: ' + (v('fName') || 'Anonymous')) + '&body=' + encodeURIComponent(body);
+  setTimeout(() => { el('sent').style.display = 'block'; }, 500);
   return false;
 }
 

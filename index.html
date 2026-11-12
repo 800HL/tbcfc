@@ -146,7 +146,8 @@
 
   /* ── STEP 3: QR ── */
   .qr-wrap { text-align: center; }
-  .qr-title { font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
+  .qr-title { font-family: 'Montserrat', Arial, sans-serif; font-weight: 700; color: var(--ink); font-size: 17px; margin-bottom: 4px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .qr-title img { width: 28px; height: 28px; }
   .qr-sub { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
   #qrBox {
     display: inline-block; padding: 14px; background: #fff; border-radius: 16px;
@@ -422,7 +423,7 @@ function el(id) { return document.getElementById(id); }
 function renderTiles() {
   el('tiles').innerHTML = ASSETS.filter(a => a.featured).map(a => `
     <button type="button" class="tile" data-id="${a.id}" aria-pressed="false" onclick="selectAsset('${a.id}')">
-      <span class="tile-icon" style="background:${a.color}">${a.icon}</span>
+      <img class="tile-icon" src="assets/coins/${a.id}.svg" alt="" width="40" height="40">
       <span>
         <span class="tile-name">${a.ticker}</span>
         <span class="tile-note">${a.note}</span>
@@ -467,7 +468,7 @@ function selectNetwork(i) {
 function renderQR() {
   const preview = network.address === 'PREVIEW';
   const addr = preview ? `PREVIEW-${asset.ticker}-${network.name.replace(/[^A-Za-z0-9]/g,'')}-NOT-ACTIVE` : network.address;
-  el('qrTitle').textContent = `${asset.name} (${asset.ticker})`;
+  el('qrTitle').innerHTML = `<img src="assets/coins/${asset.id}.svg" alt=""> ${asset.name} (${asset.ticker})`;
   el('qrSub').textContent = `on the ${network.name} network`;
   el('address').textContent = addr;
   el('chkAsset').textContent = asset.ticker;

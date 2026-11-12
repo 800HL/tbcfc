@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Give — The Bay Christian Family Church</title>
+<meta name="description" content="All the ways to give to The Bay Christian Family Church.">
+<meta property="og:title" content="Give — The Bay CFC">
+<meta property="og:description" content="All the ways to give to The Bay, in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16295B; --royal: #1F299C; --blue: #0C71C3; --sky: #9CC4EC; --mist: #D6DEEF;
+    --cream: #FAF8F3; --tint: #EEF1F7; --ink: #16295B; --body: #3D4A6B; --muted: #6B7590; --ok: #1E7F4F;
+  }
+  html { background: var(--royal); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; font-family: 'Open Sans', Arial, sans-serif; color: var(--cream);
+    background: var(--navy) linear-gradient(160deg, var(--navy) 0%, var(--royal) 100%) no-repeat; background-size: 100% 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 40px 18px 36px; position: relative; }
+  .avatar {
+    width: 104px; height: 104px; border-radius: 50%; background: var(--cream);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25); overflow: hidden;
+  }
+  .avatar img { width: 92px; height: auto; }
+  h1 { font-family: 'Montserrat', Arial, sans-serif; font-size: 22px; font-weight: 800; text-align: center; }
+  .bio { text-align: center; color: var(--mist); font-size: 15px; margin-top: 4px; }
+  .label {
+    font-family: 'Montserrat', Arial, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--sky); margin: 30px 4px 10px;
+  }
+  .link {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    background: var(--cream); color: var(--ink); text-decoration: none; border: none; cursor: pointer;
+    font: inherit; border-radius: 16px; padding: 14px 16px; margin-bottom: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15); transition: transform .12s, background .12s;
+  }
+  .link:hover { transform: translateY(-2px); background: #fff; }
+  .ico {
+    width: 44px; height: 44px; border-radius: 12px; background: var(--tint); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ico svg { width: 24px; height: 24px; stroke: var(--royal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ico img { width: 30px; height: 30px; }
+  .txt { flex: 1; }
+  .txt b { display: block; font-family: 'Montserrat', Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 1.25; }
+  .txt span { display: block; font-size: 13.5px; color: var(--muted); }
+  .txt .new { display: inline-block; font-size: 11px; font-weight: 700; color: var(--ok); background: #E7F4EC; border-radius: 6px; padding: 2px 7px; margin-left: 6px; vertical-align: 2px; font-family: 'Open Sans', Arial, sans-serif; }
+  .chev { color: var(--muted); font-size: 20px; flex-shrink: 0; transition: transform .2s; }
+  .link[aria-expanded="true"] .chev { transform: rotate(90deg); }
+
+  .panel { display: none; background: var(--cream); color: var(--ink); border-radius: 16px; padding: 6px 16px 14px; margin: -4px 0 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+  .panel.open { display: block; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #E3E8F1; }
+  .row:last-of-type { border-bottom: none; }
+  .row .k { font-size: 13px; color: var(--muted); width: 112px; flex-shrink: 0; }
+  .row .v { flex: 1; font-weight: 700; font-size: 15px; }
+  .copy { font: inherit; font-size: 12.5px; font-weight: 700; color: var(--royal); background: var(--tint); border: none; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+  .copy.ok { color: #fff; background: var(--ok); }
+  .panel p { font-size: 13.5px; color: var(--body); margin-top: 8px; }
+  .panel a { color: var(--blue); }
+
+  footer { text-align: center; margin-top: 30px; font-size: 13.5px; color: var(--mist); }
+  footer a { color: var(--cream); }
+  footer .links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="avatar"><img src="../assets/logo-navy.png" alt="The Bay Christian Family Church"></div>
+  <h1>Give to The Bay</h1>
+  <p class="bio">Where LOVE is KING and JESUS is LORD!</p>
+
+  <div class="label">In South Africa</div>
+
+  <button class="link" aria-expanded="false" aria-controls="eft" onclick="toggle(this)">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 10h18M5 10v8m4-8v8m6-8v8m4-8v8M3 21h18M12 3l9 5H3z"/></svg></span>
+    <span class="txt"><b>Bank transfer (EFT)</b><span>Standard Bank</span></span>
+    <span class="chev">›</span>
+  </button>
+  <div class="panel" id="eft">
+    <div class="row"><span class="k">Account name</span><span class="v">The Bay Christian Family Church</span></div>
+    <div class="row"><span class="k">Account no.</span><span class="v">072350822</span><button class="copy" onclick="copy(this,'072350822')">Copy</button></div>
+    <div class="row"><span class="k">Branch code</span><span class="v">033012</span><button class="copy" onclick="copy(this,'033012')">Copy</button></div>
+    <div class="row"><span class="k">Reference</span><span class="v">Partner code, or Surname Name</span></div>
+    <p>Send proof of payment to <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a></p>
+  </div>
+
+  <a class="link" href="https://pos.snapscan.io/qr/STB27649">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 7V4h3m12 0h3v3M3 17v3h3m12 0h3v-3M7 7h4v4H7zm6 6h4v4h-4zm0-6h4v4h-4zm-6 6h4v4H7z"/></svg></span>
+    <span class="txt"><b>SnapScan</b><span>Pay with the SnapScan app</span></span>
+    <span class="chev">›</span>
+  </a>
+
+  <a class="link" href="https://www.zapper.com/url/ylb35">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
+    <span class="txt"><b>Zapper</b><span>Pay with the Zapper app</span></span>
+    <span class="chev">›</span>
+  </a>
+
+  <a class="link" href="https://thebaycfc.org/product/giving/">
+    <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+    <span class="txt"><b>Card or Capitec Pay</b><span>Visa, Mastercard, Capitec Pay</span></span>
+    <span class="chev">›</span>
+  </a>
+
+  <div class="label">From anywhere in the world</div>
+
+  <a class="link" id="digitalLink" href="../">
+    <span class="ico"><img src="../assets/coins/usdc.svg" alt=""></span>
+    <span class="txt"><b>Digital assets <span class="new">New</span></b><span>USDC, USDT, Bitcoin, Ethereum</span></span>
+    <span class="chev">›</span>
+  </a>
+
+  <button class="link" aria-expanded="false" aria-controls="swift" onclick="toggle(this)">
+    <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+    <span class="txt"><b>International bank transfer</b><span>SWIFT</span></span>
+    <span class="chev">›</span>
+  </button>
+  <div class="panel" id="swift">
+    <div class="row"><span class="k">Account name</span><span class="v">The Bay Christian Family Church</span></div>
+    <div class="row"><span class="k">Bank</span><span class="v">Standard Bank, South Africa</span></div>
+    <div class="row"><span class="k">Account no.</span><span class="v">072350822</span><button class="copy" onclick="copy(this,'072350822')">Copy</button></div>
+    <div class="row"><span class="k">SWIFT / BIC</span><span class="v">SBZAZAJJ</span><button class="copy" onclick="copy(this,'SBZAZAJJ')">Copy</button></div>
+    <div class="row"><span class="k">Reference</span><span class="v">Partner code, or Surname Name</span></div>
+    <p>Send proof of payment to <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a></p>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="https://thebaycfc.org">Website</a>
+      <a href="https://thebaycfc.online.church/">Online Church</a>
+      <a href="mailto:giving@thebaycfc.org">giving@thebaycfc.org</a>
+    </div>
+    The Bay Christian Family Church
+  </footer>
+</div>
+<script>
+  // Carry demo mode through to the digital asset page (used for presentations).
+  if (new URLSearchParams(location.search).has('demo')) document.getElementById('digitalLink').href = '../?demo';
+  function toggle(btn) {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    document.getElementById(btn.getAttribute('aria-controls')).classList.toggle('open', open);
+  }
+  function copy(btn, text) {
+    navigator.clipboard && navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied'; btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

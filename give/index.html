@@ -105,7 +105,7 @@
 
   <div class="label">From anywhere in the world</div>
 
-  <a class="link" id="digitalLink" href="../">
+  <a class="link" id="digitalLink" href="../?demo">
     <span class="ico"><img src="../assets/coins/usdc.svg" alt=""></span>
     <span class="txt"><b>Digital assets <span class="new">New</span></b><span>USDC, USDT, Bitcoin, Ethereum</span></span>
     <span class="chev">›</span>
@@ -141,8 +141,6 @@
   </footer>
 </div>
 <script>
-  // Carry demo mode through to the digital asset page (used for presentations).
-  if (new URLSearchParams(location.search).has('demo')) document.getElementById('digitalLink').href = '../?demo';
   function toggle(btn) {
     const open = btn.getAttribute('aria-expanded') !== 'true';
     btn.setAttribute('aria-expanded', String(open));
